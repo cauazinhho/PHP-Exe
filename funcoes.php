@@ -57,27 +57,50 @@
 
 //-----------------------------------------------------
 
-function exercicio04($nota1, $nota2, $nota3) {
-    if (($nota1 < 0 || $nota1 > 10) || ($nota2 < 0 || $nota2 > 10) || ($nota3 < 0 || $nota3 > 10)) {
-        return "Informe notas entre 0 e 10!";
+    function exercicio04($nota1, $nota2, $nota3) {
+        if (($nota1 < 0 || $nota1 > 10) || ($nota2 < 0 || $nota2 > 10) || ($nota3 < 0 || $nota3 > 10)) {
+            return "Informe notas entre 0 e 10!";
+        }
+
+        $media = ($nota1 + $nota2 + $nota3) / 3;
+        $resultado = "Média: " . number_format($media, 2) . "\n";
+
+        if ($media < 5) {
+            $notaNecessaria = 10 - $media + 2;
+            $resultado .= "Situação: Aluno em recuperação\n";
+            $resultado .= "Nota necessária para passar: " . number_format($notaNecessaria, 2);
+        } elseif ($media < 7) {
+            $notaNecessaria = 10 - $media;
+            $resultado .= "Situação: Aluno em prova final\n";
+            $resultado .= "Nota necessária na prova final: " . number_format($notaNecessaria, 2);
+        } else {
+            $resultado .= "Situação: Aluno aprovado por média.";
+        }
+
+        return $resultado;
     }
 
-    $media = ($nota1 + $nota2 + $nota3) / 3;
-    $resultado = "Média: " . number_format($media, 2) . "\n";
+    function exercicio07($brancos, $validos, $nulos, $eleitores ) {
+        if ($brancos + $validos + $nulos) {
+            $brancos = porcentagem($brancos, $eleitores);
+            $validos = porcentagem($validos, $eleitores);
+            $nulos = porcentagem($nulos, $eleitores);
 
-    if ($media < 5) {
-        $notaNecessaria = 10 - $media + 2;
-        $resultado .= "Situação: Aluno em recuperação\n";
-        $resultado .= "Nota necessária para passar: " . number_format($notaNecessaria, 2);
-    } elseif ($media < 7) {
-        $notaNecessaria = 10 - $media;
-        $resultado .= "Situação: Aluno em prova final\n";
-        $resultado .= "Nota necessária na prova final: " . number_format($notaNecessaria, 2);
-    } else {
-        $resultado .= "Situação: Aluno aprovado por média.";
+            return "Percentual de votos brancos foi: $brancos%\n
+                    Votos nulos: $nulos%\n
+                    Votos validos: $validos%";
+                }else{
+                    return "Total de eleitores é diferentes do total";
+                }
+    }//fim do metodo
+
+
+    function porcentagem($total, $eleitores){
+        return($total * 100)/$eleitores;
     }
 
-    return $resultado;
-}
-   
+    
+
+
+
 ?>
