@@ -6,6 +6,7 @@
 </head>
 <body>
     <?php include('funcoes.php') ?>
+
     <form method="POST"> 
       <div class="mb-3">
             <label for="exampleFormControlInput1" class="form-label">Total de eleitores: </label>
@@ -40,6 +41,7 @@
                  $nulos = $_POST['nulos'];
              }
 
+             echo exercicio07($brancos, $validos, $nulos, $eleitores);
 
              
 
@@ -47,11 +49,7 @@
     </button>
 </form>
         <br><br>
-         <?php 
-             
-        echo exercicio07($brancos, $validos, $nulos, $eleitores);
-
-        ?>
+        
 
 </body>
 </html>

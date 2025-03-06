@@ -1,8 +1,9 @@
 <?php
     $num1 = 0; // Instanciar uma variável
     $num2 = 0;
+
     
-    function somar($num1, $num2) {
+    function soma($num1, $num2) {
         return $num1 + $num2;
     } // fim do método
 
@@ -21,6 +22,8 @@
     function multiplicar($num1, $num2) {
         return $num1 * $num2;
     } // fim do método
+
+
 
     //------------------------------------------------------------------------------------------------------------------------
 
@@ -86,17 +89,19 @@
  
     //------------------------------------------------------------------------------------------------------------------------
     function exercicio07($brancos, $validos, $nulos, $eleitores) {
-        if ($brancos + $validos + $nulos == $eleitores)  
+        if ($brancos + $validos + $nulos == $eleitores){
             $brancos = porcentagem($brancos, $eleitores);
             $validos = porcentagem($validos, $eleitores);
             $nulos = porcentagem($nulos, $eleitores);
 
-            return "Percentual de votos brancos foi: $brancos% <br>
-                    Votos nulos: $nulos% <br>
+            return "Percentual de votos brancos foi: $brancos% \n
+                    Votos nulos: $nulos% \n
                     Votos válidos: $validos%";
-        } else {
+        }else{
             return "Total de eleitores é diferente do total de votos!";
-        } // fim do método
+            } 
+            // fim do método
+        }
 
     function porcentagem($total, $eleitores) {
         return ($total * 100) / $eleitores;
@@ -180,15 +185,39 @@
 
 
     
-function exercicio14($numeroConta, $saldo, $debito, $credito) {
-    
-    $saldoAtual = $saldo - $debito + $credito;
+    function exercicio14($numeroConta, $saldo, $debito, $credito) {
+        
+        $saldoAtual = $saldo - $debito + $credito;
 
-    if ($saldoAtual >= 0) {
-        return "Número da conta: $numeroConta<br>Saldo atual: R$ " . number_format($saldoAtual, 2) . "<br>Saldo Positivo";
-    } else {
-        return "Número da conta: $numeroConta<br>Saldo atual: R$ " . number_format($saldoAtual, 2) . "<br>Saldo Negativo";
+        if ($saldoAtual >= 0) {
+            return "Número da conta: $numeroConta<br>Saldo atual: R$ " . number_format($saldoAtual, 2) . "<br>Saldo Positivo";
+        } else {
+            return "Número da conta: $numeroConta<br>Saldo atual: R$ " . number_format($saldoAtual, 2) . "<br>Saldo Negativo";
+        }
     }
-}
+
+     
+    function exercicio15($numero) {
+        $tabuada = "Tabuada de $numero:";
+        $tabuada .= "<table class='table table-bordered'>";
+        for ($i = 1; $i <= 10; $i++) {
+            $resultado = $numero * $i;
+            $tabuada .= "<tr><td>$numero x $i = $resultado</td></tr>";
+        }
+        $tabuada .= "</table>";
+        return $tabuada;
+    }
+
+    function exercicio16($n) {
+        $valores = "Valores inteiros entre 1 e $n:<br>";
+        for ($i = 1; $i <= $n; $i++) {
+            $valores .= "$i<br>";
+        }
+        return $valores;
+    }
+
+    
+
+
 
 ?>

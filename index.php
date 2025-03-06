@@ -38,7 +38,7 @@
         <textarea class="form-control" id="exampleFormControlTextarea1" rows="10" readonly>
             <?php
                 if($_POST['primeiroNumero'] != "" || $_POST['segundoNumero'] != ""){
-                    echo "\nA soma é: ".somar($num1,$num2).
+                    echo "\nA soma é: ".soma($num1,$num2).
                         "\nA subtração é: ".subtrair($num1,$num2).
                         "\nA divisão é: ".dividir($num1,$num2).
                         "\nA multiplicação é: ".multiplicar($num1,$num2);
