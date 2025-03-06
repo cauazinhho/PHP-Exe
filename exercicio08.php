@@ -2,55 +2,42 @@
 <html lang="pt-br">
 <head>
     <?php include 'cabecalho.php'; ?>
-    <title>Salario Mensal</title>
+    <title>Reajuste de Salário</title>
 </head>
 <body>
     <?php include('funcoes.php') ?>
     <form method="POST"> 
       <div class="mb-3">
-            <label for="exampleFormControlInput1" class="form-label">Total de eleitores: </label>
-            <input type="text" class="form-control" id="exampleFormControlInput1" name="eleitores" placeholder="Total de Eleitores">
+            <label for="salario" class="form-label">Salário Mensal: </label>
+            <input type="text" class="form-control" id="salario" name="salario" placeholder="Informe o salário">
         </div><br><br>
         
         <div class="mb-3">
-            <label for="exampleFormControlInput1" class="form-label">Votos brancos </label>
-            <input type="text" class="form-control" id="exampleFormControlInput1" name="brancos" placeholder="Votos brancos">
+            <label for="percentual" class="form-label">Percentual de Reajuste: </label>
+            <input type="text" class="form-control" id="percentual" name="percentual" placeholder="Informe o percentual de reajuste">
         </div><br><br>
         
-        <div class="mb-3">
-            <label for="exampleFormControlInput1" class="form-label">Votos validos </label>
-            <input type="text" class="form-control" id="exampleFormControlInput1" name="validos" placeholder="Votos validos">
-        </div><br><br>
-        
-        <div class="mb-3">
-            <label for="exampleFormControlInput1" class="form-label">Votos Nulos </label>
-            <input type="text" class="form-control" id="exampleFormControlInput1" name="nulos" placeholder="Votos nulos">
-        </div><br><br>
+        <button type="submit" class="btn btn-primary">Calcular Novo Salário</button>
+    </form>
+    <br><br>
 
-        //--------------------------------------------
+    <?php
+    // Verifica se os campos estão preenchidos
+    if (isset($_POST['salario']) && isset($_POST['percentual'])) {
+        $salario = $_POST['salario'];
+        $percentual = $_POST['percentual'];
 
-        <button type="submit" class="btn btn-primary">Calcular
-        <?php
-            //Coletando os números dos campos
-            if(isset($_POST['eleitores'])&& isset($_POST['nulos'] && isset($_POST['validos']) &&
-             $_POST ['brancos'])) {
-                 $eleitores = $_POST['eleitores']
-                 $brancos = $_POST['brancos']
-                 $validos = $_POST['validos'];
-                 $nulos = $_POST['nulos'];
-             }
-
-
-        ?>
-    </button>
-</form>
-        <br><br>
-         <?php 
-             
-        echo exercicio07($brancos, $validos, $nulos, $eleitores);
-
-        ?>
+        // Verifica se os valores são numéricos
+        if (is_numeric($salario) && is_numeric($percentual)) {
+            // Chama a função para calcular o novo salário
+            $novoSalario = exercicio08($salario, $percentual);
+            
+            echo "O novo salário é: R$ " . number_format($novoSalario, 2, ".");
+        } else {
+            echo "Por favor, insira valores válidos para o salário e o percentual.";
+        }
+    }
+    ?>
 
 </body>
 </html>
-
